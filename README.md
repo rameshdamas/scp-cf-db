@@ -34,7 +34,11 @@ Run the below cf CLI command to deploy the application
 ```
 > cf push
 ```
-Save data into database: [/saveUser]
+Save data into database: https://scpcfdb-XXXXXXXXX.cfapps.eu10.hana.ondemand.com/saveUser
+
+Get saved data from database:
+https://scpcfdb-XXXXXXXXX.cfapps.eu10.hana.ondemand.com/getAllUsers
+
 ## Redeploy to CloudFoundry
 Make your java code changes and run the below command to compile the code
 ```
@@ -45,6 +49,8 @@ Run the below cf CLI command to deploy the application
 ```
 > cf push
 ```
+Get saved data from database:
+https://scpcfdb-XXXXXXXXX.cfapps.eu10.hana.ondemand.com/getAllUsers
 
 ## REFERENCE
 https://blogs.sap.com/2017/05/10/first-steps-with-sap-s4hana-cloud-sdk/
