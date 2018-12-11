@@ -34,7 +34,7 @@ Run the below cf CLI command to deploy the application
 ```
 > cf push
 ```
-
+Save data into database: [/saveUser]
 ## Redeploy to CloudFoundry
 Make your java code changes and run the below command to compile the code
 ```
