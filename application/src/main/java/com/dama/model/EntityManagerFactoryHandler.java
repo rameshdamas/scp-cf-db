@@ -12,13 +12,6 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 public class EntityManagerFactoryHandler {
 
-	// Name of the persistence unit as defined in
-	// /resources/META-INF/persistence.xml
-	public static final String PERSISTENCE_UNIT_NAME = "sapc-jpa";
-
-	// Name of the data source as defined in /webapp/WEB-INF/web.xml
-	public static final String DATA_SOURCE_NAME = "java:comp/env/jdbc/DefaultDB";
-
 	private static EntityManagerFactory emf = null;
 
 	/*
@@ -37,8 +30,9 @@ public class EntityManagerFactoryHandler {
 	 */
 	private static EntityManagerFactory createNewEntityManagerFactory() throws Exception {
 
+		// Name of the data source as defined in /webapp/WEB-INF/web.xml
 		InitialContext ctx = new InitialContext();
-		DataSource ds = (DataSource) ctx.lookup(DATA_SOURCE_NAME);
+		DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/my-db");
 
 		Map<String, Object> properties = new HashMap<String, Object>();
 		properties.put(PersistenceUnitProperties.NON_JTA_DATASOURCE, ds);
@@ -48,7 +42,10 @@ public class EntityManagerFactoryHandler {
 		// Else the hub might provide outdated data
 		properties.put(PersistenceUnitProperties.CACHE_SHARED_DEFAULT, "false");
 
-		return Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
+		// Name of the persistence unit as defined in
+		// /resources/META-INF/persistence.xml
+		return Persistence.createEntityManagerFactory("dama-jpa", properties);
+		
 	}
 
 }
